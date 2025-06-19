@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]  # Trigger on push to main branch
+    branches: [ main ]
 
 jobs:
   build-and-deploy:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Python (example)
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -23,11 +23,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest  # or your preferred testing tool
-
-      - name: Build Docker image
-        run: |
-          docker build -t myapp:latest .
+          pytest
 
       - name: Deploy to server via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -36,7 +32,10 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull myapp:latest
+            cd /home/ayodeji889/myapp
+            git pull origin main
             docker stop myapp || true
             docker rm myapp || true
+            docker build -t myapp:latest .
             docker run -d --name myapp -p 80:80 myapp:latest
+
