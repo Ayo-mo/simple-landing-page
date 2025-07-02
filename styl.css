@@ -1,0 +1,235 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+}
+.main-container header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 200px;
+}
+
+.main-container header nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container header nav .logo{
+    width: 150px;
+}
+
+
+.main-container header nav .logo h1{
+    font-size: 60px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 100%;
+    transition: .2s ease;
+}
+
+.main-container header nav .logo h1:hover{
+    transform: scale(1.2);
+}
+
+
+.main-container header nav .menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-container header nav .menu ul{
+    list-style-type: none;
+    display: flex;
+}
+
+.main-container header nav .menu ul li{
+    color: lawngreen;
+    padding: 16px 26px;
+    margin: 0 8px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.main-container header nav .menu ul li:hover{
+    background: teal;
+    border-radius: 15px;
+}
+
+
+.main-container header nav .menu .calltoaction{
+    margin-left: 30px;
+}
+
+
+.main-container header nav .menu .calltoaction button{
+    border: 1px solid #ff;
+    border-radius: 50px;
+    background: none;
+    padding: 16px 26px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 2px 2px 16px rgba(0,0,0,.5);
+    transition: .5s ease-in-out;
+}
+
+
+.main-container header nav .menu .calltoaction button:hover{
+    background: #fff;
+    border: none;
+    color: #fff;
+    box-shadow: none;
+    transition: .5s ease-in-out;
+}
+.container section{
+    width: 100%;
+    height: 100vh;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container section .right img{
+    padding-top: 50px;
+
+}
+
+.container section .left{
+    padding: 50px 100px;
+    flex-direction: column;
+}
+
+
+.container section .left .content{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container section .left .content h1{
+    font-size: 60px;
+    color: lawngreen;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.container section .left .content h2{
+    font-size: 30px;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-wrap: wrap;
+}
+
+
+.container section .left .content .para{
+    height: 200px;
+}
+
+
+.container section .left .content .para p{
+    font-weight: lighter;
+    font-family: sans-serif;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.container section .left .content .para button{
+    border: 1px solid #fff;
+    border-radius: 50px;
+    padding: 16px 26px;
+    font-size: 13px;
+    transition: .2s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.container section .left .content .para button:hover{
+    transform: translate(-10px);
+    background: transparent;
+    border: 2px solid black;
+    transition: .2s ease;
+}
+
+
+.containera main{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 200px;
+}
+
+
+.containera main p{
+    font-size: 18px;
+    padding-left: 20px;
+    text-align: justify;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+.containera main form{
+    background: #000;
+    border-radius: 50px;
+    align-items: center;
+    width: 350px;
+    height: 300px;
+}
+
+.containera form h1{
+    color:#fff;
+    text-align: center;
+    margin: 30px;
+}
+
+
+.containera form input[type="text"], input[type="password"]{
+    width: 200px;
+    padding: 10px;
+    outline: none;
+    background: transparent;
+    text-align: center;
+    display: block;
+    margin: 20px auto;
+    border: 1px solid #fff;
+    border-radius: 50px;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+input[type="submit"]{
+    width: 150px;
+    height: 40px;
+    margin: 0 auto;
+    display: block;
+    border: 1px solid green;
+    border-radius: 50px;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    color: #fff;
+    transition: .01s;
+}
+
+
+input[type="submit"]:hover{
+    background: green;
+    font-size: 16px;
+}
+input[type="text"]:focus, input[type="password"]:focus{
+    border: 2px solid green;
+    color: #fff;
+}
