@@ -1,10 +1,16 @@
-name: CI/CD Pipeline
+name: CI/CD Docker staging & production
 
 on:
   push:
     branches:
       - main  # adjust if your default branch is named differently
-
+  workflow_dispatch:
+    inputs:
+      promote_to_production:
+        desscription: 'promote staging to production'
+        required: true
+        default: 'false'
+      
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -16,8 +22,14 @@ jobs:
       - name: Log in to DockerHub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-      - name: Build Docker image
+      - name: Build Docker image for staging
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest .
 
-      - name: Push Docker image
+      - name: Push staging image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest
+
+      - name: Promote to Production (Latest)
+        if: github.event.inputs.promote_to_production == 'true'
+        run: |
+          docker tag ${{ secrets.DOCKER_USERNAME }}/simple-landing-page:staging ${{ secrets.DOCKER_USERNAME }}/simple-landing-page:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/simple-landing-page:Latest
