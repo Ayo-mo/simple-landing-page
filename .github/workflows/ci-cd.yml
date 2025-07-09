@@ -33,3 +33,6 @@ jobs:
         run: |
           docker tag ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:production
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:production
+
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest
