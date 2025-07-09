@@ -1,18 +1,18 @@
-name: CI/CD Docker staging & production
+name: CI/CD Docker Staging & Production
 
 on:
   push:
     branches:
-      - main  # adjust if your default branch is named differently
+      - main
   workflow_dispatch:
     inputs:
       promote_to_production:
-        desscription: 'promote staging to production'
+        description: 'Promote to production'
         required: true
         default: 'false'
-      
+
 jobs:
-  build-and-push:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,11 +25,11 @@ jobs:
       - name: Build Docker image for staging
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest .
 
-      - name: Push staging image
+      - name: Push image to staging
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest
 
-      - name: Promote to Production (Latest)
+      - name: Promote to production
         if: github.event.inputs.promote_to_production == 'true'
         run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/simple-landing-page:staging ${{ secrets.DOCKER_USERNAME }}/simple-landing-page:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/simple-landing-page:Latest
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:latest ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:production
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-landing-page:production
