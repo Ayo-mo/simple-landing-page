@@ -1,0 +1,17 @@
+# Ignore git stuff
+.git
+.gitignore
+
+# Ignore Docker build files
+Dockerfile
+.dockerignore
+
+# Ignore OS/system files
+*.swp
+*.DS_Store
+Thumbs.db
+
+# Ignore editor/IDE settings
+.vscode
+.idea
+*.log
